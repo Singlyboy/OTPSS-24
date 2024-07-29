@@ -1,0 +1,43 @@
+@extends('backend.master')
+
+@section('content')
+
+<h1>Parts List</h1>
+<!-- <button type="button" class="btn btn-primary">Primary</button> -->
+<a class="btn btn-primary" href="{{route('parts.form')}}">Create New Parts </a>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Descption</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($allParts as $parts)
+    <tr>
+      <th scope="row">{{$parts->id}}</th>
+      <td>{{$parts->name}}</td>
+      <td>{{$parts->category->name}}</td>
+      <td>{{$parts->description}}</td>
+      <td>{{$parts->price}} BDT</td>
+      <td>
+        <img width="100px" height="100px" src="{{url('/upload/upload/'.$parts->image)}}" alt="">
+      </td>
+      <td>
+        <a class="btn btn-primary" href="#">View</a>
+        <a class="btn btn-danger" href="#">Delete</a>
+        <a class="btn btn-info" href="#">Edit</a>
+      </td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+{{$allParts->links()}}
+
+@endsection
