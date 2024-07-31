@@ -54,4 +54,56 @@ public function store(Request $request)
 
     return redirect()->route('parts.list');
 }
+public function delete($id)
+{
+
+    // Parts::find($id)->delete();
+    $parts=Part::find($id);//data entry
+    $parts->delete();//delete done
+
+    notify()->success('Parts Deleted successfully.');
+
+    return redirect()->back();
+
+    
+}
+public function viewParts($id)
+    {
+        $parts=Part::find($id);
+
+        return view('backend.page.parts-view',compact('parts'));
+    }
+    public function edit($id)
+    {
+
+        $parts=Part::find($id);
+        $allCategory=Category::all();
+        return view('backend.page.parts-edit',compact('allCategory','parts'));
+    }
+    public function update(Request $request,$id)
+    {
+        // dd($request->all());
+
+        //validation
+        $validation=Validator::make($request->all(),
+        [
+            'par_name'=>'required|min:2',
+            'par_image'=>'required',
+            'category_id'=>'required'
+        ]);
+
+
+        //query
+        $product=Part::find($id);
+        $product->update([
+            'name'=>$request->par_name,
+            'price'=>$request->par_price,
+        ]);
+      
+        notify()->success('Parts updated successfully.');
+        return redirect()->route('parts.list');
+
+
+    }
+
 }

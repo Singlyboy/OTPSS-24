@@ -22,18 +22,47 @@
 
             </div>
 
-        </div>
+   </div>
 
-        <div class="col-md-6">
+<div class="col-md-6">
 
-            <div class="action pull-right">
+<div class="action pull-right">
 
-                <ul>
+    <ul>
 
-                    <li><a href=""><i class="fa fa-user"></i> Login</a></li>
+    @guest('customerGuard')    
 
-                    <li><a href=""><i class="fa fa-lock"></i> Register</a></li>
+<li>
+              <!-- Button trigger modal -->
+              <a type="" class="" data-toggle="modal" data-target="#loginModal">
+                Login
+              </a>
+            </li>
 
+            <li>
+
+              <!-- Button trigger modal -->
+              <a type="" class="" data-toggle="modal" data-target="#exampleModal">
+                Register
+              </a>
+            </li>
+            @endguest
+            @auth('customerGuard')
+            <li>
+              <!-- Button trigger modal -->
+              <a type="" class="" >
+                {{ auth('customerGuard')->user()->name }}
+              </a>
+            </li>
+          
+            <li>
+              <!-- Button trigger modal -->
+              <a type="" class="" >
+                Logout
+              </a>
+            </li>
+
+            @endauth
                 </ul>
 
             </div>
@@ -198,4 +227,99 @@
 
 </nav>
 
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Customer Registration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="{{route('customer.registration')}}" method="post">
+        @csrf
+        <div class="modal-body">
+          <div>
+            <label for="">Enter your name:</label>
+            <input required type="text" name="customer_name" placeholder="Enter your name" class="form-control">
+          </div>
+
+          <div>
+            <label for="">Enter your email:</label>
+            <input required type="email" name="email" placeholder="Enter your email" class="form-control">
+          </div>
+
+          <div>
+            <label for="">Enter your password:</label>
+            <input required type="password" name="password" placeholder="Enter your password" class="form-control">
+          </div>
+
+
+          <div>
+            <label for="">Retype your password:</label>
+            <input required type="password" name="password_confirmation" placeholder="Retype your password" class="form-control">
+          </div>
+
+          <div>
+            <label for="">Enter your Mobile Number:</label>
+            <input required type="text" name="mobile_number" placeholder="Enter your Mobile number" class="form-control">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Register Now</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Customer Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="{{route('customer.login')}}" method="post">
+        @csrf
+        <div class="modal-body">
+
+
+          <div>
+            <label for="">Enter your email:</label>
+            <input required type="email" name="email" placeholder="Enter your email" class="form-control">
+          </div>
+
+          <div>
+            <label for="">Enter your password:</label>
+            <input required type="password" name="password" placeholder="Enter your password" class="form-control">
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">login</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
 </div>

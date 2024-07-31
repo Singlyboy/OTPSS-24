@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="http://labs.bootstrapthemes.co/demo/html/Orani/css/responsive.css">
 
 </head>
-
+@notifyCss
 <body>
 
    
@@ -44,6 +44,7 @@
 
 
     @include('frontend.partials.footer')
+	@include('notify::components.notify')
 
 	<!-- jQuery Library -->
 
@@ -57,6 +58,8 @@
 	<!-- Script -->
 
 	<script src="http://labs.bootstrapthemes.co/demo/html/Orani/js/script.js"></script>
+	
+	@notifyJs
 
 </body>
 

@@ -30,9 +30,9 @@
         <img width="100px" height="100px" src="{{url('/upload/upload/'.$parts->image)}}" alt="">
       </td>
       <td>
-        <a class="btn btn-primary" href="#">View</a>
-        <a class="btn btn-danger" href="#">Delete</a>
-        <a class="btn btn-info" href="#">Edit</a>
+      <a href="{{route('parts.view',$parts->id)}}" class="btn btn-primary">View</a>
+      <a href="{{route('parts.edit',$parts->id)}}" class="btn btn-success">Edit</a>
+      <a href="{{route('parts.delete',$parts->id)}}" class="btn btn-danger">Delete</a>
       </td>
     </tr>
     @endforeach

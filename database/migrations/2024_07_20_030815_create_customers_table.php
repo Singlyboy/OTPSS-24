@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('password');
+            $table->text('address')->nullable();
             $table->string('mobile',11)->unique();
-           // $table->text('address')->nullable();         
+           
             $table->timestamps();
         });
     }

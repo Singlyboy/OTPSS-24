@@ -7,13 +7,12 @@
   <div class="container py-5">
     <div class="row">
 
+
     @foreach ($parts as $par )
         
-   
-      <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-
-
-        <div class="card text-black">
+    <a href="{{route('show.parts',$par->id)}}">
+      <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">       
+         <div class="card text-black">
           <img style="width: 150px;" src="{{url('/upload/upload/'.$par->image)}}"
             class="card-img-top" alt="iPhone" width="50px" />
           <div class="card-body">
@@ -34,16 +33,16 @@
               
             </div>
 
-            <div class="d-flex flex-row">
+            <!--<div class="d-flex flex-row">
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
                 Learn more
               </button>
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
-
+      </a>
       @endforeach
     
     </div>

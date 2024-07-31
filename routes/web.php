@@ -15,6 +15,8 @@ use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\PartsController as FrontendPartsController;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,8 +24,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontendHomeController::class,'home'])->name('home');
 Route::get('/all-parts',[FrontendPartsController::class,'allParts'])->name('frontend.parts');
-
-
+Route::post('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
+Route::post('/do-login',[FrontendCustomerController::class,'customerLogin'])->name('customer.login');
+Route::get('/show-parts/{partsId}',[FrontendPartsController::class,'showParts'])->name('show.parts');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -40,16 +43,21 @@ Route::Group(['middleware'=>'auth'],function(){
     Route::get('/customer-form',[CustomerController::class,'form'])->name('customer.form');
     Route::post('/customer-store',[CustomerController::class,'store'])->name('customer.store');
 
-    //rorder route
+    //order route
 
     Route::get('/order',[OrderController::class,'order'])->name('order.list');
     Route::get('/order-form',[OrderController::class,'form'])->name('order.form');
     Route::post('/order-store',[OrderController::class,'store'])->name('order.store');
 
-
+//admin parts all route
     Route::get('/parts',[PartsController::class,'parts'])->name('parts.list');
     Route::get('/parts-form',[PartsController::class,'form'])->name('parts.form');
     Route::post('/parts-store',[PartsController::class,'store'])->name('parts.store');
+    Route::get('/parts/delete/{p_id}',[PartsController::class,'delete'])->name('parts.delete');
+    Route::get('/parts/view/{p_id}',[PartsController::class,'viewParts'])->name('parts.view');
+    //parts edit and update
+    Route::get('/product/edit/{p_id}',[PartsController::class, 'edit'])->name('parts.edit');
+    Route::post('/product/update/{p_id}',[PartsController::class, 'update'])->name('parts.update');
 
     //category
     Route::get('/category',[CategoryController::class,'category'])->name('category.list');
