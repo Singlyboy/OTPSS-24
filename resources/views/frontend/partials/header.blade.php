@@ -48,7 +48,7 @@
             </li>
             @endguest
             @auth('customerGuard')
-            <li>
+            <li> 
               <!-- Button trigger modal -->
               <a type="" class="" >
                 {{ auth('customerGuard')->user()->name }}
@@ -56,23 +56,22 @@
             </li>
           
             <li>
-              <!-- Button trigger modal -->
-              <a type="" class="" >
-                Logout
-              </a>
+            <a href="{{route('customer.logout')}}" 
+             >logout</a>
+              
             </li>
 
             @endauth
                 </ul>
 
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
+            </div> 
+ 
+        </div> 
+ 
+    </div> 
+ 
+</div> 
+ 
 </div>
 
 <div class="header">

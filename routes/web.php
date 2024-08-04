@@ -26,8 +26,11 @@ Route::get('/',[FrontendHomeController::class,'home'])->name('home');
 Route::get('/all-parts',[FrontendPartsController::class,'allParts'])->name('frontend.parts');
 Route::post('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
 Route::post('/do-login',[FrontendCustomerController::class,'customerLogin'])->name('customer.login');
+Route::get('/logout',[FrontendCustomerController::class,'customerLogout'])->name('customer.logout');
 Route::get('/show-parts/{partsId}',[FrontendPartsController::class,'showParts'])->name('show.parts');
 
+ 
+//admin panel backend
 Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/login',[AuthenticationController::class,'login'])->name('login');
@@ -56,8 +59,8 @@ Route::Group(['middleware'=>'auth'],function(){
     Route::get('/parts/delete/{p_id}',[PartsController::class,'delete'])->name('parts.delete');
     Route::get('/parts/view/{p_id}',[PartsController::class,'viewParts'])->name('parts.view');
     //parts edit and update
-    Route::get('/product/edit/{p_id}',[PartsController::class, 'edit'])->name('parts.edit');
-    Route::post('/product/update/{p_id}',[PartsController::class, 'update'])->name('parts.update');
+    Route::get('/parts/edit/{p_id}',[PartsController::class, 'edit'])->name('parts.edit');
+    Route::post('/parts/update/{p_id}',[PartsController::class, 'update'])->name('parts.update');
 
     //category
     Route::get('/category',[CategoryController::class,'category'])->name('category.list');

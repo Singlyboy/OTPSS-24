@@ -94,8 +94,8 @@ public function viewParts($id)
 
 
         //query
-        $product=Part::find($id);
-        $product->update([
+        $parts=Part::find($id);
+        $parts->update([
             'name'=>$request->par_name,
             'price'=>$request->par_price,
         ]);

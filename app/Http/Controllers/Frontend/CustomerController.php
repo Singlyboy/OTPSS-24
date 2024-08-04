@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
@@ -83,4 +84,15 @@ class CustomerController extends Controller
         return redirect()->route('home');
        }
     }
+    public function customerLogout()
+    {
+    
+        Auth::guard('customerGuard')->logout();
+  
+        notify()->success('logout!');
+      
+  
+        return redirect()->route('home');
+  } 
+
 }
