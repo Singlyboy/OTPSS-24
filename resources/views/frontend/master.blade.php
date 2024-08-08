@@ -11,7 +11,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Orani E-Shop</title>
+	<title>Sarol E-Shop</title>
 
 	<!-- Latest compiled and minified CSS -->
 

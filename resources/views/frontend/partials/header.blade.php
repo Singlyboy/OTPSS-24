@@ -120,7 +120,9 @@
 
                 <div class="cart-icon">
 
-                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                    <a href="{{route('view.cart')}}">
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
 
                 </div>
 
@@ -129,8 +131,34 @@
                     SHOPPING CART
 
                     <br>
+ <!-- @php 
+            if(session()->has('basket')){
+                echo count(session()->get('basket'));
+            }else{
+                echo 0;
+            }
+            @endphp -->
 
-                    0 items - $0.00
+            <!-- @if (session()->has('basket'))
+
+            {{ count(session()->get('basket')) }} 
+
+            @else
+            0
+            @endif -->
+
+          <!-- ternary operator -->
+
+          <!-- (condition) ? if block : else block -->
+
+         
+
+    @if(session()->has('basket'))
+    {{count(session()->get('basket'))}}item(s) -{{array_sum(array_column(session()->get('basket'),'subtotal'))}}
+    @else
+    0 item(s) @endif
+           
+   
 
                 </div>
 
