@@ -22,7 +22,7 @@
 
             <div class="text-center">
               <div class="p-3 mx-n3 mb-4" style="background-color: #eff1f2;">
-                <h5 class="mb-0">Best</h5>
+                <h5 class="mb-0">{{$par->category->name}}</h5>
               </div>
               <div class="d-flex flex-column mb-4 lead">
                 <span class="mb-2">{{$par->price}} BDT</span>

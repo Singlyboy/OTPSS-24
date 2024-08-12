@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\OrderDetial;
 use App\Models\Part;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -124,9 +127,66 @@ public function store(Request $request)
 
        return redirect()->back();
 
+  
+    }
+    public function checkout()
+    {
+        return view('frontend.pages.checkout');
+    }
 
+    public function placeOrder(Request $request)
+    {
 
        
-
-    }
+        // dd($request->all());
+        //step1 validation
+        $validation=Validator::make($request->all(),[
+            'receiver_name'=>'required',
+            'email'=>'required|email',
+            'address'=>'required',
+            'paymentMethod'=>'required|in:cod,online'
+            ]);
+    
+        if($validation->fails())
+        {
+            notify()->error($validation->getMessageBag());
+           
+            return redirect()->back();
+        }
+    
+            $cart=session()->get('basket');
+            
+            //quary for store data into Orders table
+           
+            $order=Order::create([
+                'receiver_name'=>$request->receiver_name,
+                'receiver_email'=>$request->email,
+                'receiver_address'=>$request->address,
+                'receiver_mobile'=>'01682869369',
+                'payment_method'=>$request->paymentMethod,
+                'customer_id'=>auth('customerGuard')->user()->id,
+                'total_amount'=>array_sum(array_column($cart,'subtotal'))
+    
+            ]);
+    
+            //quary for storing data into Order_details table
+               
+            foreach($cart as $singleData)
+            {
+              
+                OrderDetail::create([
+                    'order_id'=>$order->id,
+                    'parts_id'=>$singleData['parts_id'],
+                    'parts_unit_price'=>$singleData['price'],
+                    'parts_quantity'=>$singleData['quantity'],
+                    'subtotal'=>$singleData['subtotal'],
+                ]);
+            }
+               
+    
+            notify()->success('Order place successfully.');
+            session()->forget('basket');
+            return redirect()->route('home');
+    
+        }
 }

@@ -26,13 +26,20 @@ Route::get('/',[FrontendHomeController::class,'home'])->name('home');
 Route::get('/all-parts',[FrontendPartsController::class,'allParts'])->name('frontend.parts');
 Route::post('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
 Route::post('/do-login',[FrontendCustomerController::class,'customerLogin'])->name('customer.login');
-Route::get('/logout',[FrontendCustomerController::class,'customerLogout'])->name('customer.logout');
+
 Route::get('/show-parts/{partsId}',[FrontendPartsController::class,'showParts'])->name('show.parts');
 //add cart
 Route::get('/add-to-cart/{partsId}',[OrderController::class, 'addToCart'])->name('add.to.cart');
 Route::get('/view-cart',[OrderController::class, 'viewCart'])->name('view.cart');
 Route::get('/clear-cart',[OrderController::class, 'clearCart'])->name('cart.clear');
 Route::get('/cart/item/delete/{id}',[OrderController::class, 'cartItemDelete'])->name('cart.item.delete');
+
+//authentication for user login for frontend
+Route::group(['middleware'=>'customer_auth'],function (){
+Route::get('/logout',[FrontendCustomerController::class,'customerLogout'])->name('customer.logout');
+Route::get('/checkout',[OrderController::class, 'checkout'])->name('checkout');
+Route::post('/place-order',[OrderController::class, 'placeOrder'])->name('order.place');
+});
 
  
 //admin panel backend

@@ -68,7 +68,7 @@ class CustomerController extends Controller
 
    
        //condition for login
-       $credentials=$request->except('_token');
+          $credentials=$request->except('_token');
        
        $check=auth('customerGuard')->attempt($credentials);
     
@@ -88,8 +88,8 @@ class CustomerController extends Controller
     {
     
         Auth::guard('customerGuard')->logout();
-  
-        notify()->success('logout!');
+        session()->forget('basket');  
+        notify()->success('logout!');     
       
   
         return redirect()->route('home');
