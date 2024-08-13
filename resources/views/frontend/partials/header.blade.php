@@ -50,7 +50,7 @@
             @auth('customerGuard')
             <li> 
               <!-- Button trigger modal -->
-              <a type="" class="" >
+              <a href="{{route('view.profile')}}" class="" >
                 {{ auth('customerGuard')->user()->name }}
               </a>
             </li>
@@ -98,11 +98,11 @@
 
             <div class="search-form">
 
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" action= "{{route('search')}}">
 
                     <div class="form-group">
 
-                      <input type="text" class="form-control" placeholder="What do you need...">
+                      <input name= "search_key" value ="{{request()->search_key}}"type="text"  class="form-control"  placeholder="What do you need...">
 
                     </div>
 

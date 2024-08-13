@@ -25,7 +25,7 @@
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">{{ $cartData['parts_name'] }}</p>
+                <p  class="lead fw-normal mb-2">Parts Name:{{ $cartData['parts_name'] }}</p>
                 <p><span class="text-muted">Price: </span> {{$cartData['price']}}</p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">

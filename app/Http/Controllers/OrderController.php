@@ -131,7 +131,9 @@ public function store(Request $request)
     }
     public function checkout()
     {
-        return view('frontend.pages.checkout');
+
+        $myCart=session()->get('basket')?? [];
+        return view('frontend.pages.checkout',compact('myCart'));
     }
 
     public function placeOrder(Request $request)

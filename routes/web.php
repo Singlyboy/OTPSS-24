@@ -33,12 +33,14 @@ Route::get('/add-to-cart/{partsId}',[OrderController::class, 'addToCart'])->name
 Route::get('/view-cart',[OrderController::class, 'viewCart'])->name('view.cart');
 Route::get('/clear-cart',[OrderController::class, 'clearCart'])->name('cart.clear');
 Route::get('/cart/item/delete/{id}',[OrderController::class, 'cartItemDelete'])->name('cart.item.delete');
+Route::get('/search',[FrontendPartsController::class,'search'])->name('search');
 
 //authentication for user login for frontend
 Route::group(['middleware'=>'customer_auth'],function (){
 Route::get('/logout',[FrontendCustomerController::class,'customerLogout'])->name('customer.logout');
 Route::get('/checkout',[OrderController::class, 'checkout'])->name('checkout');
 Route::post('/place-order',[OrderController::class, 'placeOrder'])->name('order.place');
+Route::get('/view-profile',[FrontendCustomerController::class,'viewProfile'])->name('view.profile');
 });
 
  

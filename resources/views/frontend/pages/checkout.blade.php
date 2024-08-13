@@ -14,35 +14,17 @@
         <span class="text-muted">Your cart</span>
         <span class="badge badge-secondary badge-pill">3</span>
       </h4>
+      @foreach ($myCart as $chackData)
+
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h6 class="my-0">Parts name</h6>
-            <small class="text-muted">Brief description</small>
+            <h6 class="my-0">{{ $chackData['parts_name'] }}</h6>
+          
           </div>
-          <span class="text-muted">$12</span>
+          <span class="text-muted">Price:{{ $chackData['price'] }}</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second parts</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$5</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between bg-light">
-          <div class="text-success">
-            <h6 class="my-0">Promo code</h6>
-            <small>EXAMPLECODE</small>
-          </div>
-          <span class="text-success">-$5</span>
-        </li>
+       @endforeach
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (BDT)</span>
           <strong>
