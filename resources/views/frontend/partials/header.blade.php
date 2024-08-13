@@ -86,7 +86,7 @@
 
                 <a href="index.html">
 
-                    <img src="images/logo.png" alt="Orani E-shop">
+                    <img src="" alt="Sarol E-shop">
 
                 </a>
 

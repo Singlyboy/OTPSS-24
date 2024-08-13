@@ -288,7 +288,7 @@ input[type=text]:placeholder {
       @csrf
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="login">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth" value="LogIn">
     </form>
 
     <!-- Remind Passowrd -->
