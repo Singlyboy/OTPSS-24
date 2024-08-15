@@ -46,7 +46,7 @@
                                     <td>{{$order->total_amount}}</td>
                                     <td>{{$order->status}}</td>
                                     <td>
-                                        <a href="">View Order</a>
+                                        <a href="{{route('view.invoice',$order->id)}}">View Order</a>
                                     </td>
                                 </tr>
                                 @endforeach

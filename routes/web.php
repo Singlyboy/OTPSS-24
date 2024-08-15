@@ -41,6 +41,7 @@ Route::get('/logout',[FrontendCustomerController::class,'customerLogout'])->name
 Route::get('/checkout',[OrderController::class, 'checkout'])->name('checkout');
 Route::post('/place-order',[OrderController::class, 'placeOrder'])->name('order.place');
 Route::get('/view-profile',[FrontendCustomerController::class,'viewProfile'])->name('view.profile');
+Route::get('/view-invoice/{id}',[OrderController::class,'viewInvoice'])->name('view.invoice');
 });
 
  

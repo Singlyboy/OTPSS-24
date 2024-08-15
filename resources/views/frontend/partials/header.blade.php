@@ -228,7 +228,7 @@
 
     <div class="collapse navbar-collapse" id="navbar">
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="flex-direction:row">
 
         <li><a href="#">Home</a></li>
 

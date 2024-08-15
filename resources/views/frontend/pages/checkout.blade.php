@@ -22,7 +22,7 @@
             <h6 class="my-0">{{ $chackData['parts_name'] }}</h6>
           
           </div>
-          <span class="text-muted">Price:{{ $chackData['price'] }}</span>
+          <span class="text-muted">Price:{{ $chackData['subtotal'] }}</span>
         </li>
        @endforeach
         <li class="list-group-item d-flex justify-content-between">

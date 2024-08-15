@@ -28,7 +28,15 @@
     <link rel="stylesheet" href="http://labs.bootstrapthemes.co/demo/html/Orani/css/style.css">
 
     <link rel="stylesheet" href="http://labs.bootstrapthemes.co/demo/html/Orani/css/responsive.css">
-
+<style>
+	.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: -10px;
+    margin-bottom: 0;
+    list-style: none;
+}
+</style>
 </head>
 @notifyCss
 <body>

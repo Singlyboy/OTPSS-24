@@ -11,30 +11,27 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    public function order(){
-        $allOrders = Order::paginate(5);
-        return view ('backend.order',compact('allOrders'));
-}
+   
 
-public function form()
-{
-    return view('backend.order-form');    
-}
+// public function form()
+// {
+//     return view('backend.order-form');    
+// }
 
 
 
-public function store(Request $request)
-{
+// public function store(Request $request)
+// {
 
-   // dd($request->all());
-   Order::create([
-        //bam pase table er column name => dan pase input field er name
-        'name'=>$request->ord_name,
-       'amount'=>$request->ord_amount
-    ]);
+//    // dd($request->all());
+//    Order::create([
+//         //bam pase table er column name => dan pase input field er name
+//         'name'=>$request->ord_name,
+//        'amount'=>$request->ord_amount
+//     ]);
 
-    return redirect()->back();
-}
+//     return redirect()->back();
+// }
 
    public function addToCart($pId)
    {
@@ -191,4 +188,13 @@ public function store(Request $request)
             return redirect()->route('home');
     
         }
+        public function viewInvoice($id)
+        {
+            $order=Order::with('orderDetails')->find($id);
+            return view('frontend.pages.invoice',compact('order'));
+        }
+        public function order(){
+            $allOrders = Order::paginate(5);
+            return view ('backend.order',compact('allOrders'));
+    }
 }
