@@ -64,8 +64,8 @@ Route::Group(['middleware'=>'auth'],function(){
     //order route
 
     Route::get('/order',[OrderController::class,'order'])->name('order.list');
-    Route::get('/order-form',[OrderController::class,'form'])->name('order.form');
-    Route::post('/order-store',[OrderController::class,'store'])->name('order.store');
+    Route::get('/order-view/{o_id}',[OrderController::class,'orderView'])->name('order.View');
+    Route::get('/order-confirm/{id}',[OrderController::class,'orderConfirm'])->name('order.confirm');
 
 //admin parts all route
     Route::get('/parts',[PartsController::class,'parts'])->name('parts.list');

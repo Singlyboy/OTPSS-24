@@ -1,7 +1,3 @@
-@extends('frontend.master')
-
-@section('content')
-
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -12,17 +8,8 @@
 
     <!-- External CSS libraries -->
     <link type="text/css" rel="stylesheet" href="https://storage.googleapis.com/theme-vessel-items/checking-sites-2/disee-html/HTML/main/assets/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="https://storage.googleapis.com/theme-vessel-items/checking-sites-2/disee-html/HTML/main/assets/fonts/font-awesome/css/font-awesome.min.css">
-
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" >
-
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900">
-
-    <!-- Custom Stylesheet -->
-    <link type="text/css" rel="stylesheet" href="https://storage.googleapis.com/theme-vessel-items/checking-sites-2/disee-html/HTML/main/assets/css/style.css">
+   
+  
 </head>
 <body>
 
@@ -39,11 +26,11 @@
                                 <div class="col-sm-6">
                                     <div class="invoice-number mb-50">
                                         <h4 class="inv-title-1">Invoice To</h4>
-                                        <h2 class="name">{{$order->receiver_name}}</h2>
+                                        <h2 class="name">{{$orders->receiver_name}}</h2>
                                         <p class="invo-addr-1">
-                                        <div>Address:{{$order->receiver_address}}</div>
-                                      <div>Email: {{ $order->receiver_email }}</div>
-                                      <div>Phone: {{$order->receiver_mobile}}</div>
+                                        <div>{{$orders->receiver_address}}</div>
+                                      <div>Email: {{ $orders->receiver_email }}</div>
+                                      <div>Phone: {{$orders->receiver_mobile}}</div>
                                         </p>
                                     </div>
                                 </div>
@@ -76,7 +63,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($order->orderDetails as $item)
+                                    @foreach ($orders->orderDetails as $item)
                         
                                     <tr class="tr">
                                         <td>
@@ -95,47 +82,43 @@
                                         <td></td>
                                         <td></td>
                                         <td class="text-center f-w-600 active-color">Grand Total</td>
-                                        <td class="f-w-600 text-end active-color">{{$order->total_amount}}</td>
+                                        <td class="f-w-600 text-end active-color">{{$orders->total_amount}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                 <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Action
+                </button>
+                <ul class="dropdown-menu">
+
+                @if($orders->status=='pending')
+
+                <li><a class="dropdown-item" href="{{route('order.confirm',$orders->id)}}">Confirm</a></li>
+                <li><a class="dropdown-item" href="#">Cancel</a></li>
+                 <li><a class="dropdown-item" href="#">Delate</a></li>
+                 @endif
+                                   
+                </ul>
+                </div>
       
                  
                     </div>
-                    <div class="invoice-btn-section clearfix d-print-none">
-                        <a  onClick="printReport()" class="btn btn-lg btn-print">
-                            <i class="fa fa-print"></i> Print Invoice
-                        </a>
-                        
-                        <a id="invoice_download_btn" class="btn btn-lg btn-download btn-theme">
-                            <i class="fa fa-download"></i> Download Invoice
-                        </a>
+             
+                </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Invoice 2 end -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
-
-<script type="text/javascript">
-    function printReport()
-    {
-        var printContents = document.getElementById("invoice_wrapper").innerHTML;
-			var originalContents = document.body.innerHTML;
-
-			document.body.innerHTML = printContents;
-
-			window.print();
-
-			document.body.innerHTML = originalContents;
-    }
 </script>
 </body>
 </html>
 
-
-@endsection

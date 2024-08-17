@@ -13,26 +13,6 @@ class OrderController extends Controller
 {
    
 
-// public function form()
-// {
-//     return view('backend.order-form');    
-// }
-
-
-
-// public function store(Request $request)
-// {
-
-//    // dd($request->all());
-//    Order::create([
-//         //bam pase table er column name => dan pase input field er name
-//         'name'=>$request->ord_name,
-//        'amount'=>$request->ord_amount
-//     ]);
-
-//     return redirect()->back();
-// }
-
    public function addToCart($pId)
    {
 
@@ -161,7 +141,7 @@ class OrderController extends Controller
                 'receiver_name'=>$request->receiver_name,
                 'receiver_email'=>$request->email,
                 'receiver_address'=>$request->address,
-                'receiver_mobile'=>'01682869369',
+                'receiver_mobile'=>auth('customerGuard')->user()->mobile,
                 'payment_method'=>$request->paymentMethod,
                 'customer_id'=>auth('customerGuard')->user()->id,
                 'total_amount'=>array_sum(array_column($cart,'subtotal'))
@@ -169,7 +149,7 @@ class OrderController extends Controller
             ]);
     
             //quary for storing data into Order_details table
-               
+            
             foreach($cart as $singleData)
             {
               
@@ -196,5 +176,18 @@ class OrderController extends Controller
         public function order(){
             $allOrders = Order::paginate(5);
             return view ('backend.order',compact('allOrders'));
+    }
+    public function orderView($id)
+    {
+
+        $orders=Order::find($id);
+        return view ('backend.page.orderView',compact('orders'));
+    }
+    public function orderConfirm($id)
+    {
+
+        $orders=Order::find($id);
+        $orders->update(['status'=>'accept']);
+        return redirect()->back();
     }
 }

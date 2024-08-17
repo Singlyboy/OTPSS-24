@@ -21,9 +21,12 @@
       <td>{{$order->receiver_name}}</td>
       <td>{{$order->status}}</td>
            <td>
-        <a class="btn btn-primary" href="#">View</a>
-        <a class="btn btn-danger" href="#">Panding</a>
-        <a class="btn btn-info" href="#">Confirm</a>
+        <a class="btn btn-primary" href="{{route('order.View',$order->id)}}">View</a>
+        
+        @if($order->status=='pending')
+        <!-- <a class="btn btn-danger" href="">Cancel</a> -->
+        <!-- <a class="btn btn-info" href="{{route('order.confirm',$order->id)}}">Confirm</a> -->
+        @endif
       </td>
     </tr>
     @endforeach
