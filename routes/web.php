@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 //for website frontend site
 
 Route::get('/',[FrontendHomeController::class,'home'])->name('home');
+Route::get('/new',[FrontendHomeController::class,'new'])->name('new');
+
 Route::get('/all-parts',[FrontendPartsController::class,'allParts'])->name('frontend.parts');
 Route::post('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
 Route::post('/do-login',[FrontendCustomerController::class,'customerLogin'])->name('customer.login');
@@ -65,7 +67,8 @@ Route::Group(['middleware'=>'auth'],function(){
 
     Route::get('/order',[OrderController::class,'order'])->name('order.list');
     Route::get('/order-view/{o_id}',[OrderController::class,'orderView'])->name('order.View');
-    Route::get('/order-confirm/{id}',[OrderController::class,'orderConfirm'])->name('order.confirm');
+    Route::post('/order-status/{o_id}',[OrderController::class,'orderStatus'])->name('order.status');
+    // Route::get('/order-cancel/{id}',[OrderController::class,'orderCancel'])->name('order.cancel');
 
 //admin parts all route
     Route::get('/parts',[PartsController::class,'parts'])->name('parts.list');
@@ -93,8 +96,7 @@ Route::Group(['middleware'=>'auth'],function(){
 
 
     Route::get('/report',[ReportController::class,'report'])->name('report.list');
-    Route::get('/report-form',[ReportController::class,'form'])->name('report.form');
-    Route::post('/report-store',[ReportController::class,'store'])->name('report.store');
+   
 
     Route::get('/stock',[StockController::class,'stock'])->name('stock.list');
     Route::get('/stock-form',[StockController::class,'form'])->name('stock.form');

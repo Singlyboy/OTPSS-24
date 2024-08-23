@@ -174,7 +174,7 @@ class OrderController extends Controller
             return view('frontend.pages.invoice',compact('order'));
         }
         public function order(){
-            $allOrders = Order::paginate(5);
+            $allOrders = Order::with('customer')->get();
             return view ('backend.order',compact('allOrders'));
     }
     public function orderView($id)
@@ -189,5 +189,16 @@ class OrderController extends Controller
         $orders=Order::find($id);
         $orders->update(['status'=>'accept']);
         return redirect()->back();
+    }
+
+    public function orderStatus(Request $request,$id){
+
+        $orders=Order::find($id);
+    //    dd($orders);
+        $orders->update([
+            'status'=>$request->order_status]);
+            return redirect()->route('order.list');
+
+
     }
 }

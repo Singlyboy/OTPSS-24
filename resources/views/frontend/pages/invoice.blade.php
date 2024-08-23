@@ -112,6 +112,7 @@
                         <a id="invoice_download_btn" class="btn btn-lg btn-download btn-theme">
                             <i class="fa fa-download"></i> Download Invoice
                         </a>
+                        <a href ="" style="padding: 15px;" class="btn btn-success">Cancel Order</a>
                     </div>
                 </div>
             </div>

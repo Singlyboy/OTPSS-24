@@ -86,7 +86,7 @@
 
                 <a href="index.html">
 
-                    <img src="" alt="Sarol E-shop">
+                    <img style="width: 150px;" src="{{asset('/upload/upload/SArol (1).png')}}" alt="Sarol E-shop">
 
                 </a>
 
@@ -230,17 +230,17 @@
 
       <ul class="nav navbar-nav navbar-right" style="flex-direction:row">
 
-        <li><a href="#">Home</a></li>
+        <li><a href="{{route('home')}}">Home</a></li>
 
-        <li><a href="#">Blog</a></li>
+        
 
         <li>
-            <a href="{{route('frontend.parts')}}">All Parts</a>
+            <a href="{{route('frontend.parts')}}">Parts</a>
         </li>
 
         <li><a href="#">Features</a></li>
 
-        <li><a href="#">Media</a></li>
+        <li><a href="#">Blog</a></li>
 
         <li><a href="#">About Us</a></li>
 

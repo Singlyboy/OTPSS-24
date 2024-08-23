@@ -16,7 +16,7 @@
           <img style="width: 150px;" src="{{url('/upload/upload/'.$par->image)}}"
             class="card-img-top" alt="iPhone" width="50px" />
           <div class="card-body">
-            <div class="text-center mt-1">
+            <div class="text-center mt-2">
               <h4 class="card-title">{{$par->name}}</h4>
                 </div>
 
@@ -49,5 +49,8 @@
     </div>
   </div>
 </section>
+
+
+
 
 @endsection

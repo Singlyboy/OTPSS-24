@@ -88,18 +88,18 @@
                                 </table>
                             </div>
                         </div>
-                 <div class="dropdown">
-                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                 Action
-                </button>
-                <ul class="dropdown-menu">
-
-                @if($orders->status=='pending')
-
-                <li><a class="dropdown-item" href="{{route('order.confirm',$orders->id)}}">Confirm</a></li>
-                <li><a class="dropdown-item" href="#">Cancel</a></li>
-                 <li><a class="dropdown-item" href="#">Delate</a></li>
-                 @endif
+                 <form action="{{route('order.status',$item->order_id)}}" method="post">
+                 @csrf
+               
+                <select name="order_status" class="form-select" aria-label="Default select example">
+                <option value="Pending">Pending</option>
+                <option value="Confirm">Confirm</option>
+                <option value="Cancel">Cancel</option>
+                
+             
+                </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
+               
                                    
                 </ul>
                 </div>

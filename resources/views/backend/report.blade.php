@@ -1,35 +1,43 @@
 @extends('backend.master')
 
 @section('content')
-<h1>Report List</h1>
-<!-- <button type="button" class="btn btn-primary">Primary</button> -->
-<a class="btn btn-primary" href="{{route('report.form')}}">Create Report</a>
-<table class="table table-striped">
+<h1>Order list</h1>
+
+<form action="{{route('report.list')}}">
+@csrf
+<div class="form-group">
+    <label for="">Enter From Date</label>
+    <input required value="{{request()->from_date}}" name="from_date" type="date" class="form-control" id="" placeholder="Enter Parts Name">
+  </div>
+  <div class="form-group">
+    <label for="">Enter To Date</label>
+    <input required value="{{request()->to_date}}" name="to_date" type="date" class="form-control" id="" placeholder="Enter Parts Name">
+  </div>
+  <a class="btn btn-info" href="">Search</a>
+
+
+</form>
+
+  <table class="table table-striped">
   <thead>
     <tr>
     <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+   
     </tr>
   </thead>
 
 
-@foreach($allReports as $report)
+@foreach($allOrders as $order)
     <tr>
-      <th scope="row">{{$report->id}}</th>
-      <td>{{$report->name}}</td>
-      <td>{{$report->date}}</td>
-           <td>
-        <a class="btn btn-primary" href="#">View</a>
-        <a class="btn btn-danger" href="#">Delete</a>
-        <a class="btn btn-info" href="#">Edit</a>
-      </td>
-    </tr>
-    @endforeach
+      <th scope="row">{{$order->id}}</th>
+      <td>{{$order->receiver_name}}</td>
+      <td>{{$order->status}}</td>
+      @endforeach
   </tbody>
 </table>
 
-{{$allReports->links()}}
+{{$allOrders->links()}}
 
 @endsection
