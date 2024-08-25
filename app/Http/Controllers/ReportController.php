@@ -11,9 +11,11 @@ class ReportController extends Controller
 {
     public function report(){
 
-if(request()->has('from_date') && request()->has('to_date'))
+        if(request()->has('from_date') && request()->has('to_date'))
 {
-    $allOrders= Order::whereBetween('created_at',[Request()->from_date,Request()->to_date])->get();
+    $allOrders= Order::with('customer')
+    ->whereBetween('created_at',[request()->from_date,request()->to_date])
+    ->get();
     return view('backend.report',compact('allOrders'));
 }
 

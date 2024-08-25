@@ -68,8 +68,7 @@ Route::Group(['middleware'=>'auth'],function(){
     Route::get('/order',[OrderController::class,'order'])->name('order.list');
     Route::get('/order-view/{o_id}',[OrderController::class,'orderView'])->name('order.View');
     Route::post('/order-status/{o_id}',[OrderController::class,'orderStatus'])->name('order.status');
-    // Route::get('/order-cancel/{id}',[OrderController::class,'orderCancel'])->name('order.cancel');
-
+   
 //admin parts all route
     Route::get('/parts',[PartsController::class,'parts'])->name('parts.list');
     Route::get('/parts-form',[PartsController::class,'form'])->name('parts.form');
@@ -94,7 +93,7 @@ Route::Group(['middleware'=>'auth'],function(){
     Route::get('/payment-form',[PaymentController::class,'form'])->name('payment.form');
     Route::post('/payment-store',[PaymentController::class,'store'])->name('payment.store');
 
-
+//report
     Route::get('/report',[ReportController::class,'report'])->name('report.list');
    
 

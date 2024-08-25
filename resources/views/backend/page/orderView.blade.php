@@ -95,6 +95,8 @@
                 <option value="Pending">Pending</option>
                 <option value="Confirm">Confirm</option>
                 <option value="Cancel">Cancel</option>
+                <option value="Completed">Completed</option>
+                
                 
              
                 </select>

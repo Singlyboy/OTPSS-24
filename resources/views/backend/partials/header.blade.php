@@ -29,6 +29,7 @@
                     </button>
                 </li>
             </ul>
+            <p style="color:white;margin-right:50px;">{{auth()->user()->name}}</p>
 
             <div id="navbarSearch" class="navbar-search w-100 collapse">
                 <input
