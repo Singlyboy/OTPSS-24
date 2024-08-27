@@ -279,16 +279,16 @@ input[type=text]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      <img src="{{asset('/upload/upload/images.jpeg')}}" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
-     <h6>Admin Login</h6>
+     <h6>Admin </h6>
     <form action="{{route('dologin')}}" method="post">
       @csrf
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="login">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth" value="LogIn">
     </form>
 
     <!-- Remind Passowrd -->

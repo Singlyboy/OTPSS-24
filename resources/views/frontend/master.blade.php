@@ -11,7 +11,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Orani E-Shop</title>
+	<title>Sarol E-Shop</title>
 
 	<!-- Latest compiled and minified CSS -->
 
@@ -28,7 +28,15 @@
     <link rel="stylesheet" href="http://labs.bootstrapthemes.co/demo/html/Orani/css/style.css">
 
     <link rel="stylesheet" href="http://labs.bootstrapthemes.co/demo/html/Orani/css/responsive.css">
-
+<style>
+	.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: -10px;
+    margin-bottom: 0;
+    list-style: none;
+}
+</style>
 </head>
 @notifyCss
 <body>

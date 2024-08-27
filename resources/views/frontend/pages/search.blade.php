@@ -6,6 +6,9 @@
 <section style="background-color: #eee;">
   <div class="container py-5">
     <div class="row">
+    <p>
+    {{ $parts->count() }} items found for "{{ request()->search_key }}"
+</p>
 
 
     @foreach ($parts as $par )
@@ -16,7 +19,7 @@
           <img style="width: 150px;" src="{{url('/upload/upload/'.$par->image)}}"
             class="card-img-top" alt="iPhone" width="50px" />
           <div class="card-body">
-            <div class="text-center mt-2">
+            <div class="text-center mt-1">
               <h4 class="card-title">{{$par->name}}</h4>
                 </div>
 
@@ -49,8 +52,5 @@
     </div>
   </div>
 </section>
-
-
-
 
 @endsection

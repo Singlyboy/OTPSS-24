@@ -48,31 +48,30 @@
             </li>
             @endguest
             @auth('customerGuard')
-            <li>
+            <li> 
               <!-- Button trigger modal -->
-              <a type="" class="" >
+              <a href="{{route('view.profile')}}" class="" >
                 {{ auth('customerGuard')->user()->name }}
               </a>
             </li>
           
             <li>
-              <!-- Button trigger modal -->
-              <a type="" class="" >
-                Logout
-              </a>
+            <a href="{{route('customer.logout')}}" 
+             >logout</a>
+              
             </li>
 
             @endauth
                 </ul>
 
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
+            </div> 
+ 
+        </div> 
+ 
+    </div> 
+ 
+</div> 
+ 
 </div>
 
 <div class="header">
@@ -87,7 +86,7 @@
 
                 <a href="index.html">
 
-                    <img src="images/logo.png" alt="Orani E-shop">
+                    <img style="width: 150px;" src="{{asset('/upload/upload/SArol (1).png')}}" alt="Sarol E-shop">
 
                 </a>
 
@@ -99,11 +98,11 @@
 
             <div class="search-form">
 
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" action= "{{route('search')}}">
 
                     <div class="form-group">
 
-                      <input type="text" class="form-control" placeholder="What do you need...">
+                      <input name= "search_key" value ="{{request()->search_key}}"type="text"  class="form-control"  placeholder="What do you need...">
 
                     </div>
 
@@ -121,7 +120,9 @@
 
                 <div class="cart-icon">
 
-                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                    <a href="{{route('view.cart')}}">
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
 
                 </div>
 
@@ -130,8 +131,34 @@
                     SHOPPING CART
 
                     <br>
+ <!-- @php 
+            if(session()->has('basket')){
+                echo count(session()->get('basket'));
+            }else{
+                echo 0;
+            }
+            @endphp -->
 
-                    0 items - $0.00
+            <!-- @if (session()->has('basket'))
+
+            {{ count(session()->get('basket')) }} 
+
+            @else
+            0
+            @endif -->
+
+          <!-- ternary operator -->
+
+          <!-- (condition) ? if block : else block -->
+
+         
+
+    @if(session()->has('basket'))
+    {{count(session()->get('basket'))}}item(s) -{{array_sum(array_column(session()->get('basket'),'subtotal'))}}
+    @else
+    0 item(s) @endif
+           
+   
 
                 </div>
 
@@ -201,19 +228,19 @@
 
     <div class="collapse navbar-collapse" id="navbar">
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="flex-direction:row">
 
-        <li><a href="#">Home</a></li>
+        <li><a href="{{route('home')}}">Home</a></li>
 
-        <li><a href="#">Blog</a></li>
+        
 
         <li>
-            <a href="{{route('frontend.parts')}}">All Parts</a>
+            <a href="{{route('frontend.parts')}}">Parts</a>
         </li>
 
         <li><a href="#">Features</a></li>
 
-        <li><a href="#">Media</a></li>
+        <li><a href="#">Blog</a></li>
 
         <li><a href="#">About Us</a></li>
 

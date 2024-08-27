@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Order;
 use App\Models\Report;
 
 use Illuminate\Http\Request;
@@ -8,24 +10,21 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     public function report(){
-        $allReports = Report::paginate(5);
-        return view('backend.report',compact('allReports'));
-}
-public function form()
+
+        if(request()->has('from_date') && request()->has('to_date'))
 {
-    return view('backend.report-form');    
+    $allOrders= Order::with('customer')
+    ->whereBetween('created_at',[request()->from_date,request()->to_date])
+    ->get();
+    return view('backend.report',compact('allOrders'));
 }
 
-public function store(Request $request)
-{
 
-    //dd($request->all());
-    Report::create([
-        //bam pase table er column name => dan pase input field er name
-        'name'=>$request->rep_name,
-       'date'=>$request->rep_date
-    ]);
 
-    return redirect()->back();
+
+        $allOrders = Order::paginate(10);
+     
+    return view('backend.report',compact('allOrders'));
 }
+
 }

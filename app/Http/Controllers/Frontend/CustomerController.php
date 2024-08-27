@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,7 +69,7 @@ class CustomerController extends Controller
 
    
        //condition for login
-       $credentials=$request->except('_token');
+          $credentials=$request->except('_token');
        
        $check=auth('customerGuard')->attempt($credentials);
     
@@ -83,4 +85,23 @@ class CustomerController extends Controller
         return redirect()->route('home');
        }
     }
+    public function customerLogout()
+    {
+    
+        Auth::guard('customerGuard')->logout();
+        session()->forget('basket');  
+        notify()->success('logout!');     
+      
+  
+        return redirect()->route('home');
+  } 
+
+  public function viewProfile()
+  {
+
+      $orders=Order::where('customer_id',auth('customerGuard')->user()->id)->get();
+      
+      return view('frontend.pages.profile',compact('orders'));
+  }
 }
+

@@ -30,4 +30,11 @@ class PartsController extends Controller
       //method chaining
       return view('frontend.pages.single_parts',compact('singleParts','relatedParts'));
     }
+
+    public function search ()
+    {
+      $parts=Part::where('name','LIKE','%'.request()->search_key.'%')
+      ->get();
+      return view('frontend.pages.search',compact('parts'));
+    }
 }
