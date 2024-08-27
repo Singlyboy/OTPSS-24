@@ -1,0 +1,133 @@
+
+<div class="footer">
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-3">
+
+            <div class="single-widget">
+
+                <h2 class="widget-title">About Us</h2>
+
+                <div class="widget-inner">
+
+                    <p>Office:Pirojali, Gazipur, Bangladesh</p>
+
+                    <p>Phone: 01682869369 </p>
+
+
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96fbf7fffad6eff9e3e4f2f9fbf7fff8b8f5f9fb">[saralsagar417@gmail.com]</a></p>
+
+                    <img src="images/payment.png" alt="we accept">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+
+            <div class="single-widget">
+
+                <h2 class="widget-title">Information</h2>
+
+                <div class="widget-inner">
+
+                    <ul>
+
+                        <li><a href="">Frequently Asked Question</a></li>
+
+                        <li><a href="">Terms and Condition</a></li>
+
+                        <li><a href="">Privacy Policy</a></li>
+
+                        <li><a href="">Customer Service</a></li>
+
+                        <li><a href="">Delivery Information</a></li>
+
+                        <li><a href="">Manufacturers</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+
+            <div class="single-widget">
+
+                <h2 class="widget-title">Customer Care</h2>
+
+                <div class="widget-inner">
+
+                    <ul>
+
+                        <li><a href="">Contact Us</a></li>
+
+                        <li><a href="">Sitemap</a></li>
+
+                        <li><a href="">Gift Vouchers</a></li>
+
+                        <li><a href="">Live Chat 24x7</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+
+            <div class="single-widget">
+
+                <h2 class="widget-title">Our Services</h2>
+
+                <div class="widget-inner">
+
+                    <ul>
+
+                        <li><a href="">Shipping & Returns</a></li>
+
+                        <li><a href="">Secure Shopping</a></li>
+
+                        <li><a href="">International Shipping</a></li>
+
+                        <li><a href="">Affiliates</a></li>
+
+                        <li><a href="">Contact</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+<div class="copyright text-center">
+
+<div class="container">
+
+    <div class="row">
+
+        <p class="copyright"> Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+</p>
+
+    </div>
+
+</div>
+
+</div>
